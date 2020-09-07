@@ -14,9 +14,19 @@ on:
       - unlabeled
 
 jobs:
+  check_approval:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Approve Pull Request
+      uses: juliangruber/approve-pull-request-action@v1
+      with:
+        github-token: ${{ secrets.TOKEN }}
+        number: 1
+
   # thats's all. single step is needed - if PR is mergeable according to
   # branch protection rules it will be merged automatically
   mergepal:
+    needs: check_approval
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
