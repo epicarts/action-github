@@ -1,17 +1,38 @@
-name: Merge Pal (events)
+name: PR Auto-build
 
 on:
-  pull_request_review: # try to merge after review
+  pull_request_review:
+    types: [submitted]
 
 jobs:
-  # thats's all. single step is needed - if PR is mergeable according to
-  # branch protection rules it will be merged automatically
-  mergepal:
-    # 리뷰 상태가 appreved 승인 됨. 일 경우
-    if: github.event.review.state == 'approved'
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: maxkomarychev/merge-pal-action@v0.5.1
-        with:
-          token: ${{ secrets.TOKEN }}
+      - name: Trigger pr-autobuild action for building PR
+        uses: nikhilaii93/pr-autobuild@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_NAME: epicarts
+          DEFAULT_APPROVAL_COUNT_ENV: 0
+          GITHUB_REOSITORY: epicarts/action-github
+          BUILD_COMMENT_ENV: "OK to test"
+          DEFAULT_MERGE: merge
+          DELETE_BRANCH_ENV: true
+
+# name: Merge Pal (events)
+
+# on:
+#   pull_request_review: # try to merge after review
+
+# jobs:
+#   # thats's all. single step is needed - if PR is mergeable according to
+#   # branch protection rules it will be merged automatically
+#   mergepal:
+#     # 리뷰 상태가 appreved 승인 됨. 일 경우
+#     if: github.event.review.state == 'approved'
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v1
+#       - uses: maxkomarychev/merge-pal-action@v0.5.1
+#         with:
+#           token: ${{ secrets.TOKEN }}
