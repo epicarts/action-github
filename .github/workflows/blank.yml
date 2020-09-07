@@ -4,11 +4,8 @@ jobs:
   myJob:
     runs-on: ubuntu-latest
     steps:
-    - uses: taichi/approved-event-action@v1.2.1
-      id: approved
-      with:
-        approvals: '2'
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
-    - run: echo "Approved !!"
-      if: steps.approved.outputs.approved == 'true'
+      - name: Approve Pull Request
+        uses: juliangruber/approve-pull-request-action@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          number: 0
