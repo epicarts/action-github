@@ -15,7 +15,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           GITHUB_NAME: nikhilaii93
-          DEFAULT_APPROVAL_COUNT_ENV: 1
+          DEFAULT_APPROVAL_COUNT_ENV: 0
           BUILD_COMMENT_ENV: "OK to test"
           PR_LABEL_ENV: RELEASE_TEST
           CODEOWNERS: abc@example.com,defteam@example.com
