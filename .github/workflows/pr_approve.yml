@@ -3,8 +3,8 @@ name: pr_approve
 #master 브런치의 PR 리뷰가 달렸을 때.
 on:
   pull_request_review:
-    branches: [ master ]
-    types: [submitted]
+    branches:
+      - master
 
 jobs:
   build:
