@@ -1,0 +1,11 @@
+on: pull_request_review
+name: Example Job
+jobs:
+  myJob:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Approve Pull Request
+      uses: juliangruber/approve-pull-request-action@v1.0.1
+      with:
+        github-token: ${{ secrets.TOKEN }}
+        number: 0
