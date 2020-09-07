@@ -13,5 +13,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           DEFAULT_APPROVAL_COUNT_ENV: 0
+          GITHUB_NAME: epicarts
           BUILD_COMMENT_ENV: "OK to test"
           DEFAULT_MERGE_ENV: merge
