@@ -17,3 +17,5 @@ jobs:
     # Runs a single command using the runners shell
     - name: Send greeting
       run: echo "Hellossssssssasdasd ${{ github.event.inputs.name }}"
+    - name: Merge pull requests
+      uses: pascalgn/automerge-action@v0.9.0
